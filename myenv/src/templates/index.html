@@ -34,6 +34,23 @@ nav {
   padding: 20px;
 }
 
+.abc {
+  float: left;
+  width: 30%;
+  height: 100px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+.top {
+    position: relative;
+    background-color: #ffffff;
+    height: 68px;
+    padding-top: 20px;
+    line-height: 50px;
+    overflow: hidden;
+    z-index: 2;
+}
 /* Style the list inside the menu */
 nav ul {
   list-style-type: none;
@@ -72,7 +89,6 @@ footer {
   }
 }*/
 
-
     </style>
 
 </head>
@@ -89,7 +105,7 @@ footer {
     </nav>
     <div class="col-lg-4">
         <h2>Automation Store</h2>
-        <button type="Submit" class="btn btn-primary btn-lg btn-block"
+        <button type="Submit" class="btn btn-unique btn-rounded btn-sm my-0"
                 onclick="document.getElementById('demo').innerHTML = Date()">
             Click me to display Date and Time.
         </button>
