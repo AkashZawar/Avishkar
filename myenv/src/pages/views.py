@@ -22,12 +22,12 @@ def about_view(request,*args,**kwargs):
 	#return HttpResponse("<h1>About world</h1>")
 	return render(request,"about.html",my_context)
 
-def social_view(request,*args,**kwargs):
+def search_view(request,*args,**kwargs):
 	my_context = {
-			"pagetitle" : "NightWatch Automation : Social"
+			"pagetitle" : "NightWatch Automation : Search"
 			}
 	#return HttpResponse("<h1>Social world</h1>")
-	return render(request,"social.html",{})
+	return render(request,"page/search.html",{})
 
 def contact_view(request,*args,**kwargs):
 	my_context = {
