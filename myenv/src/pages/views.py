@@ -10,7 +10,7 @@ def home_view(request,*args,**kwargs):
 	my_context = {
 			"pagetitle" : "NightWatch Automation : Home"
 			}
-	return render(request, "index.html", {})
+	return render(request, "page/index.html", {})
 
 def about_view(request,*args,**kwargs):
 	my_context = {
@@ -35,3 +35,10 @@ def contact_view(request,*args,**kwargs):
 			}
 	#return HttpResponse("<h1>Contact world</h1>")
 	return render(request,"contact.html",{})
+
+def social_view(request,*args,**kwargs):
+	my_context = {
+			"pagetitle" : "NightWatch Automation : Contact"
+			}
+	#return HttpResponse("<h1>Contact world</h1>")
+	return render(request,"social.html",{})
