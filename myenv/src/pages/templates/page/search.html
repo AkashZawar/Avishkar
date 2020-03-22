@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% load staticfiles %}
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Night Watch Automation</title>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:200,400,800' rel='stylesheet' type='text/css'>
+	<meta name="description" content="Examples for creative website header animations using Canvas and JavaScript" />
+	<meta name="keywords" content="header, canvas, animated, creative, inspiration, javascript" />
+	<meta name="author" content="Codrops" />
+
+	<style>
+		article,
+		aside,
+		details,
+		figcaption,
+		figure,
+		footer,
+		header,
+		hgroup,
+		main,
+		nav,
+		section,
+		summary {
+			display: block;
+		}
+
+		audio,
+		canvas,
+		video {
+			display: inline-block;
+		}
+
+		audio:not([controls]) {
+			display: none;
+			height: 0;
+		}
+
+		[hidden] {
+			display: none;
+		}
+
+		html {
+			font-family: sans-serif;
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		body {
+			margin: 0;
+		}
+
+		a:focus {
+			outline: thin dotted;
+		}
+
+		a:active,
+		a:hover {
+			outline: 0;
+		}
+
+		h1 {
+			font-size: 2em;
+			margin: 0.67em 0;
+		}
+
+		abbr[title] {
+			border-bottom: 1px dotted;
+		}
+
+		b,
+		strong {
+			font-weight: bold;
+		}
+
+		dfn {
+			font-style: italic;
+		}
+
+		hr {
+			-moz-box-sizing: content-box;
+			box-sizing: content-box;
+			height: 0;
+		}
+
+		mark {
+			background: #ff0;
+			color: #000;
+		}
+
+		code,
+		kbd,
+		pre,
+		samp {
+			font-family: monospace, serif;
+			font-size: 1em;
+		}
+
+		pre {
+			white-space: pre-wrap;
+		}
+
+		q {
+			quotes: "\201C" "\201D" "\2018" "\2019";
+		}
+
+		small {
+			font-size: 80%;
+		}
+
+		sub,
+		sup {
+			font-size: 75%;
+			line-height: 0;
+			position: relative;
+			vertical-align: baseline;
+		}
+
+		sup {
+			top: -0.5em;
+		}
+
+		sub {
+			bottom: -0.25em;
+		}
+
+		img {
+			border: 0;
+		}
+
+		svg:not(:root) {
+			overflow: hidden;
+		}
+
+		figure {
+			margin: 0;
+		}
+
+		fieldset {
+			border: 1px solid #c0c0c0;
+			margin: 0 2px;
+			padding: 0.35em 0.625em 0.75em;
+		}
+
+		legend {
+			border: 0;
+			padding: 0;
+		}
+
+		button,
+		input,
+		select,
+		textarea {
+			font-family: inherit;
+			font-size: 100%;
+			margin: 0;
+		}
+
+		button,
+		input {
+			line-height: normal;
+		}
+
+		button,
+		select {
+			text-transform: none;
+		}
+
+		button,
+		html input[type="button"],
+		input[type="reset"],
+		input[type="submit"] {
+			-webkit-appearance: button;
+			cursor: pointer;
+		}
+
+		button[disabled],
+		html input[disabled] {
+			cursor: default;
+		}
+
+		input[type="checkbox"],
+		input[type="radio"] {
+			box-sizing: border-box;
+			padding: 0;
+		}
+
+		input[type="search"] {
+			-webkit-appearance: textfield;
+			-moz-box-sizing: content-box;
+			-webkit-box-sizing: content-box;
+			box-sizing: content-box;
+		}
+
+		input[type="search"]::-webkit-search-cancel-button,
+		input[type="search"]::-webkit-search-decoration {
+			-webkit-appearance: none;
+		}
+
+		button::-moz-focus-inner,
+		input::-moz-focus-inner {
+			border: 0;
+			padding: 0;
+		}
+
+		textarea {
+			overflow: auto;
+			vertical-align: top;
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+
+		@font-face {
+			font-weight: normal;
+			font-style: normal;
+			font-family: 'codropsicons';
+			src: url('../fonts/codropsicons/codropsicons.eot');
+			src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+			url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+			url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+			url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+		}
+
+		*,
+		*:after,
+		*:before {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.clearfix:before,
+		.clearfix:after {
+			content: '';
+			display: table;
+		}
+
+		.clearfix:after {
+			clear: both;
+		}
+
+		.large-header {
+			position: relative;
+			width: 100%;
+			background: #333;
+			overflow: hidden;
+			background-size: cover;
+			background-position: center center;
+			z-index: 1;
+		}
+
+		.main-title {
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			color: #f9f1e9;
+			text-align: center;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate3d(-50%, -50%, 0);
+			transform: translate3d(-50%, -50%, 0);
+		}
+
+		.demo-1 .main-title {
+			text-transform: uppercase;
+			font-size: 2.2em;
+			letter-spacing: 0.1em;
+		}
+
+
+		.main-title .thin {
+			font-weight: 200;
+		}
+
+		@media only screen and (max-width: 768px) {
+			.demo-1 .main-title {
+				font-size: 3em;
+			}
+		}
+		body,
+		html {
+			height: 100%;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			background: #e74c3c !important;
+		}
+
+		.searchbar {
+			margin-bottom: auto;
+			margin-top: auto;
+			height: 60px;
+			background-color: #5d5d5d;
+			border-radius: 30px;
+			padding: 10px;
+		}
+
+		.search_input {
+			color: white;
+			border: 0;
+			outline: 0;
+			background: none;
+			width: 0;
+			caret-color: transparent;
+			line-height: 40px;
+			transition: width 0.4s linear;
+		}
+
+		.searchbar:hover>.search_input {
+			padding: 0 10px;
+			width: 450px;
+			caret-color: red;
+			transition: width 0.4s linear;
+		}
+
+		.searchbar:hover>.search_icon {
+			background: white;
+			color: #e74c3c;
+		}
+
+		.search_icon {
+			height: 40px;
+			width: 40px;
+			float: right;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			color: white;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body style="background-image: url('static/img/demo-1-bg.jpg');">
+	<div class="container demo-1">
+		<div class="content">
+			<div id="large-header" class="large-header">
+				<canvas id="demo-canvas"></canvas>
+				<h1 class="main-title" style="top:60%">Nights Watch
+					<span class="thin">Automation</span>
+				</h1>
+
+				<div class=" main-title d-flex justify-content-center h-100">
+					<div class="searchbar">
+						<input class="search_input" type="text" name="" placeholder="Search...">
+						<a href="/product" class="search_icon">
+							<i class="fas fa-search"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script src="{% static 'js/TweenLite.min.js' %}"></script>
+	<script src="{% static 'js/EasePack.min.js' %}"></script>
+	<script src="{% static 'js/rAF.js' %}"></script>
+	<script src="{% static 'js/demo-1.js' %}"></script>
+</body>
+<script>
+		(function () {
+
+			var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
+
+			// Main
+			initHeader();
+			initAnimation();
+			addListeners();
+
+			function initHeader() {
+				width = window.innerWidth;
+				height = window.innerHeight;
+				target = { x: width / 2, y: height / 2 };
+
+				largeHeader = document.getElementById('large-header');
+				largeHeader.style.height = height + 'px';
+
+				canvas = document.getElementById('demo-canvas');
+				canvas.width = width;
+				canvas.height = height;
+				ctx = canvas.getContext('2d');
+
+				// create points
+				points = [];
+				for (var x = 0; x < width; x = x + width / 20) {
+					for (var y = 0; y < height; y = y + height / 20) {
+						var px = x + Math.random() * width / 20;
+						var py = y + Math.random() * height / 20;
+						var p = { x: px, originX: px, y: py, originY: py };
+						points.push(p);
+					}
+				}
+
+				// for each point find the 5 closest points
+				for (var i = 0; i < points.length; i++) {
+					var closest = [];
+					var p1 = points[i];
+					for (var j = 0; j < points.length; j++) {
+						var p2 = points[j]
+						if (!(p1 == p2)) {
+							var placed = false;
+							for (var k = 0; k < 5; k++) {
+								if (!placed) {
+									if (closest[k] == undefined) {
+										closest[k] = p2;
+										placed = true;
+									}
+								}
+							}
+
+							for (var k = 0; k < 5; k++) {
+								if (!placed) {
+									if (getDistance(p1, p2) < getDistance(p1, closest[k])) {
+										closest[k] = p2;
+										placed = true;
+									}
+								}
+							}
+						}
+					}
+					p1.closest = closest;
+				}
+
+				// assign a circle to each point
+				for (var i in points) {
+					var c = new Circle(points[i], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
+					points[i].circle = c;
+				}
+			}
+
+			// Event handling
+			function addListeners() {
+				if (!('ontouchstart' in window)) {
+					window.addEventListener('mousemove', mouseMove);
+				}
+				window.addEventListener('scroll', scrollCheck);
+				window.addEventListener('resize', resize);
+			}
+
+			function mouseMove(e) {
+				var posx = posy = 0;
+				if (e.pageX || e.pageY) {
+					posx = e.pageX;
+					posy = e.pageY;
+				}
+				else if (e.clientX || e.clientY) {
+					posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+					posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+				}
+				target.x = posx;
+				target.y = posy;
+			}
+
+			function scrollCheck() {
+				if (document.body.scrollTop > height) animateHeader = false;
+				else animateHeader = true;
+			}
+
+			function resize() {
+				width = window.innerWidth;
+				height = window.innerHeight;
+				largeHeader.style.height = height + 'px';
+				canvas.width = width;
+				canvas.height = height;
+			}
+
+			// animation
+			function initAnimation() {
+				animate();
+				for (var i in points) {
+					shiftPoint(points[i]);
+				}
+			}
+
+			function animate() {
+				if (animateHeader) {
+					ctx.clearRect(0, 0, width, height);
+					for (var i in points) {
+						// detect points in range
+						if (Math.abs(getDistance(target, points[i])) < 4000) {
+							points[i].active = 0.3;
+							points[i].circle.active = 0.6;
+						} else if (Math.abs(getDistance(target, points[i])) < 20000) {
+							points[i].active = 0.1;
+							points[i].circle.active = 0.3;
+						} else if (Math.abs(getDistance(target, points[i])) < 40000) {
+							points[i].active = 0.02;
+							points[i].circle.active = 0.1;
+						} else {
+							points[i].active = 0;
+							points[i].circle.active = 0;
+						}
+
+						drawLines(points[i]);
+						points[i].circle.draw();
+					}
+				}
+				requestAnimationFrame(animate);
+			}
+
+			function shiftPoint(p) {
+				TweenLite.to(p, 1 + 1 * Math.random(), {
+					x: p.originX - 50 + Math.random() * 100,
+					y: p.originY - 50 + Math.random() * 100, ease: Circ.easeInOut,
+					onComplete: function () {
+						shiftPoint(p);
+					}
+				});
+			}
+
+			// Canvas manipulation
+			function drawLines(p) {
+				if (!p.active) return;
+				for (var i in p.closest) {
+					ctx.beginPath();
+					ctx.moveTo(p.x, p.y);
+					ctx.lineTo(p.closest[i].x, p.closest[i].y);
+					ctx.strokeStyle = 'rgba(156,217,249,' + p.active + ')';
+					ctx.stroke();
+				}
+			}
+
+			function Circle(pos, rad, color) {
+				var _this = this;
+
+				// constructor
+				(function () {
+					_this.pos = pos || null;
+					_this.radius = rad || null;
+					_this.color = color || null;
+				})();
+
+				this.draw = function () {
+					if (!_this.active) return;
+					ctx.beginPath();
+					ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
+					ctx.fillStyle = 'rgba(156,217,249,' + _this.active + ')';
+					ctx.fill();
+				};
+			}
+
+			// Util
+			function getDistance(p1, p2) {
+				return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+			}
+
+		})();
+	</script>
+</html>
