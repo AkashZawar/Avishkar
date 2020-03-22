@@ -1,60 +1,63 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% load staticfiles %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
 <!-- Main Form Starts Here -->
-<form>
-	<div class="form-row">
-		<div class="col form-group">
-			<label>First name </label>
-			{{form.First_Name}}
-		  	<!-- <input type="text" class="form-control" placeholder=""> -->
-		</div> <!-- form-group end.// -->
-		<div class="col form-group">
-			<label>Last Name : </label>
-			{{form.Last_Name}}
-		  	<!-- <input type="text" class="form-control" placeholder=" "> -->
-		</div> <!-- form-group end.// -->
-	</div> <!-- form-row end.// -->
-	<div class="form-group">
-		<label>Email address :</label>
-		{{form.Email_Address}}
-		<!-- <input type="email" class="form-control" placeholder=""> -->
-		<small class="form-text text-muted">We'll never share your email with anyone else.</small>
-	</div> <!-- form-group end.// -->
-	<div class="form-group">
-			<label class="form-check form-check-inline">
-		  <input class="form-check-input" type="radio" name="gender" value="option1">
-		  <span class="form-check-label"> Male </span>
-		</label>
-		<label class="form-check form-check-inline">
-		  <input class="form-check-input" type="radio" name="gender" value="option2">
-		  <span class="form-check-label"> Female</span>
-		</label>
-	</div> <!-- form-group end.// -->
-	<div class="form-row">
-		<div class="form-group col-md-6">
-		  <label>City</label>
-		  <input type="text" class="form-control">
-		</div> <!-- form-group end.// -->
-		<div class="form-group col-md-6">
-		  <label>Country</label>
-		  <select id="inputState" class="form-control">
-		    <option> Choose...</option>
-		      <option>Uzbekistan</option>
-		      <option>Russia</option>
-		      <option selected="">United States</option>
-		      <option>India</option>
-		      <option>Afganistan</option>
-		  </select>
-		</div> <!-- form-group end.// -->
-	</div> <!-- form-row.// -->
-	<div class="form-group col-md-3">
-		<label>Create Password : </label>
-	    <input class="form-control" type="password">
-	</div> <!-- form-group end.// -->  
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block col-md-3"> Register  </button>
-    </div> <!-- form-group// -->      
-    <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>                                          
-</form>
+		<body>
+		    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+		        <div class="wrapper wrapper--w900">
+		            <div class="card card-6">
+		                <div class="card-heading">
+		                    <h2 class="title">Apply for job</h2>
+		                </div>
+		                <div class="card-body">
+		                    <form method="POST">
+		                        <div class="form-row">
+		                            <div style="display: block;" class="name">Title of the Code</div>
+		                            <div class="value">
+		                                <input class="input--style-6" type="text" name="full_name" placeholder="Be specific and imagine you’re asking a question to another person">
+		                            </div>
+		                        </div>
+		                        <div class="form-row">
+		                            <div class="name">Email address</div>
+		                            <div class="value">
+		                                <div class="input-group">
+		                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="form-row">
+		                            <div class="name">Message</div>
+		                            <div class="value">
+		                                <div class="input-group">
+		                                    <textarea class="textarea--style-6" name="message" placeholder="Message sent to the employer"></textarea>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="form-row">
+		                            <div class="name">Upload CV</div>
+		                            <div class="value">
+		                                <div class="input-group js-input-file">
+		                                    <input class="input-file" type="file" name="file_cv" id="file">
+		                                    <label class="label--file" for="file">Choose file</label>
+		                                    <span class="input-file__info">No file chosen</span>
+		                                </div>
+		                                <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
+		                            </div>
+		                        </div>
+		                    </form>
+		                </div>
+		                <div class="card-footer">
+		                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+
+		    
+
+		</body>
+
 {% endblock %}
