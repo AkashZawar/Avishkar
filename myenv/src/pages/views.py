@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from .forms import UploadFileForm
+
 
 # Create your views here.
 def home_view(request,*args,**kwargs):
@@ -42,3 +45,19 @@ def social_view(request,*args,**kwargs):
 			}
 	#return HttpResponse("<h1>Contact world</h1>")
 	return render(request,"social.html",{})
+
+
+# Below code for file upload handling 
+def model_form_upload(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/upload')
+    else:
+        form = UploadFileForm()
+    return render(request, 'page/model_form_upload.html', {
+        'form': form
+    })
+
+# file Upload handling Ends 

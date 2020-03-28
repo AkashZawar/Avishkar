@@ -6,10 +6,20 @@
 	<h1>this is about page</h1>
 	<p>About page templete</p>
 <p>
-<ul>
+<!-- <ul>
 	<li>{{key1}}</li>
 	<li>{{key2}}</li>
 	<li>{{key3}}</li>
-</ul>
+</ul> -->
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button">{{key1}}</button>
+    <button class="dropdown-item" type="button">{{key2}}</button>
+    <button class="dropdown-item" type="button">{{key3}}</button>
+  </div>
+</div>
 </p>
 {% endblock %}

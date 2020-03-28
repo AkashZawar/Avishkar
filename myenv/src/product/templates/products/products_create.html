@@ -3,6 +3,7 @@
 {% block content %}
 
 {% load staticfiles %}
+<!-- <h1>{{ form.as_p }}</h1> -->
 <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
 <!-- Main Form Starts Here -->
 		<body>
@@ -43,21 +44,26 @@
 		                                    <input class="input-file input-file__info" type="file" name="file_cv" id="file">
 		                                    <!-- <label class="label--file" for="file">Choose file</label> -->
 		                                    <!-- <span class="input-file__info">No file chosen</span> -->
+
+		                                    <!-- File Upload test -->
+		                                    <form method="post" enctype="multipart/form-data">
+											    {% csrf_token %}
+											    <!-- {{ form.as_p }} -->
+											    <button class="btn btn--radius-1 btn--blue-2"  type="submit">Upload</button>
+										    </form>
+		                                    <!-- File upload test ENDs -->
 		                                </div>
 		                                <div class="label--desc">Upload your code or any other relevant file. Max file size 50 MB</div>
 		                            </div>
 		                        </div>
 		                    </form>
 		                </div>
-		                <div class="card-footer">
+		               <!--  <div class="card-footer">
 		                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
-		                </div>
+		                </div> -->
 		            </div>
 		        </div>
 		    </div>
-
-		    
-
 		</body>
 
 {% endblock %}

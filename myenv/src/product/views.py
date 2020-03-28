@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 from .forms import ProductForm
 
 from .models import Product
@@ -7,7 +9,6 @@ def product_create_view(request):
     form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
-
     context = {'form': form}
     return render(request, "products/products_create.html", context)
 
@@ -20,17 +21,6 @@ def product_detail_view(request):
     	'description' : obj.description,
     }
     context={"object" : obj}
-
-    # context = {
-    #     'First_Name': 'sergre',
-    #     'Last_Name': 'grgdr',
-    #     'Email_Address': 'grggrg',
-    #     'Gender_Male': True,
-    #     'Gender_Female': False,
-    #     'City': 'fgdgd',
-    #     'Country': 'dggrgdgr'
-    # }
-
     return render(request, "products/products_detail.html", context)
 
 # def excel_view(request):
