@@ -11,52 +11,14 @@
 		        <div class="wrapper wrapper--w900">
 		            <div class="card card-6">
 		                <div class="card-heading">
-		                    <h2 class="title">Apply for job</h2>
+		                    <h2 class="title">Fill Below to Upload your code</h2>
 		                </div>
 		                <div class="card-body">
-		                    <form method="POST">
-		                        <div class="form-row">
-		                            <div style="display: block;" class="name">Title of the Code</div>
-		                            <div class="value">
-		                                <input class="input--style-6" type="text" name="full_name" placeholder="Be specific and imagine you’re asking a question to another person">
-		                            </div>
-		                        </div>
-		                        <div class="form-row">
-		                            <div class="name">Description of the code</div>
-		                            <div class="value">
-		                                <div class="input-group">
-		                                    <input class="textarea--style-6" type="email" name="email" placeholder="Code Discription">
-		                                </div>
-		                            </div>
-		                        </div>
-		                        <div class="form-row">
-		                            <div class="name">Code</div>
-		                            <div class="value">
-		                                <div class="input-group">
-		                                    <textarea class="textarea--style-6" name="message" placeholder="Place your code or the git URL"></textarea>
-		                                </div>
-		                            </div>
-		                        </div>
-		                        <div class="form-row">
-		                            <div class="name">Upload Code File</div>
-		                            <div class="value">
-		                                <div class="input-group js-input-file">
-		                                    <input class="input-file input-file__info" type="file" name="file_cv" id="file">
-		                                    <!-- <label class="label--file" for="file">Choose file</label> -->
-		                                    <!-- <span class="input-file__info">No file chosen</span> -->
-
-		                                    <!-- File Upload test -->
-		                                    <form method="post" enctype="multipart/form-data">
-											    {% csrf_token %}
-											    <!-- {{ form.as_p }} -->
-											    <button class="btn btn--radius-1 btn--blue-2"  type="submit">Upload</button>
-										    </form>
-		                                    <!-- File upload test ENDs -->
-		                                </div>
-		                                <div class="label--desc">Upload your code or any other relevant file. Max file size 50 MB</div>
-		                            </div>
-		                        </div>
-		                    </form>
+		                    <form method="post" enctype="multipart/form-data" class="form-group">
+							    {% csrf_token %}
+							    {{ form.as_p }}
+							    <button type="submit">Upload</button>
+							</form>
 		                </div>
 		               <!--  <div class="card-footer">
 		                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
