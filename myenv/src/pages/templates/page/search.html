@@ -289,7 +289,6 @@
 			width: 100%;
 			margin: 0;
 			padding: 0;
-			background: #e74c3c !important;
 		}
 
 		.searchbar {
@@ -338,11 +337,11 @@
 	</style>
 </head>
 
-<body style="background-image: url('static/img/demo-1-bg.jpg');">
+<body >
 	<div class="container demo-1">
 		<div class="content">
 			<div id="large-header" class="large-header">
-				<canvas id="demo-canvas"></canvas>
+				<canvas id="demo-canvas" style="background-image: url('{% static '/img/demo-1-bg.jpg' %}');"></canvas>
 				<h1 class="main-title" style="top:60%">Nights Watch
 					<span class="thin">Automation</span>
 				</h1>
@@ -350,7 +349,7 @@
 				<div class=" main-title d-flex justify-content-center h-100">
 					<div class="searchbar">
 						<input class="search_input" type="text" name="" placeholder="Search...">
-						<a href="/product" class="search_icon">
+						<a href="/product" class="search_icon glyphicon glyphicon-search">
 							<i class="fas fa-search"></i>
 						</a>
 					</div>
@@ -552,5 +551,8 @@
 			}
 
 		})();
+	</script>
+	<script type='text/javascript' data-cfasync='false'>
+		window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '39c6c28a-a12c-4962-b24f-57f440ef8701', f: true }); done = true; } }; })();
 	</script>
 </html>
