@@ -29,7 +29,7 @@ from product.views import product_detail_view,product_create_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view, name='home'),
+    path('', search_view, name='home'),
     path('home/', home_view, name='home'),
     path('about/', about_view),
     path('search/', search_view),

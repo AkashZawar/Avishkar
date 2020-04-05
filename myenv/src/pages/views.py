@@ -26,10 +26,8 @@ def about_view(request,*args,**kwargs):
 	return render(request,"about.html",my_context)
 
 def search_view(request,*args,**kwargs):
-	my_context = {
-			"pagetitle" : "NightWatch Automation : Search"
-			}
-	#return HttpResponse("<h1>Social world</h1>")
+	if request.method == 'POST':
+		print(request)
 	return render(request,"page/search.html",{})
 
 def contact_view(request,*args,**kwargs):
