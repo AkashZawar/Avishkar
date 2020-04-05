@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .forms import UploadFileForm
+from .forms import UploadFileForm,SearchForm
 
 
 # Create your views here.
@@ -26,8 +26,10 @@ def about_view(request,*args,**kwargs):
 	return render(request,"about.html",my_context)
 
 def search_view(request,*args,**kwargs):
-	if request.method == 'POST':
-		print(request)
+	# if request.method == 'POST':
+	# search_input_forms = SearchForm()
+	# print(request.GET)
+	# context = {'search_input_forms': form }
 	return render(request,"page/search.html",{})
 
 def contact_view(request,*args,**kwargs):

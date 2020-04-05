@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Code
+from .models import Code,Search_page_input
 
 
 class UploadFileForm(forms.ModelForm):
@@ -11,4 +11,19 @@ class UploadFileForm(forms.ModelForm):
 		'Description_of_the_code',
 		'Code',
 		'Upload_Code_file',
+		'author',
+		'language',
+		'vote',
+		'score',
+		'visits',
 		]
+
+
+class SearchForm(forms.ModelForm):
+	class Meta:
+		model = Search_page_input
+		fields = [
+			'searchInput'
+		]
+
+
