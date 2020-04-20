@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .forms import UploadFileForm,SearchForm
+from .forms import UploadFileForm,SearchForm,resultForm
 
 
 # Create your views here.
@@ -61,3 +61,18 @@ def model_form_upload(request):
     })
 
 # file Upload handling Ends 
+
+# Below code for result display 
+def display_result(request):
+    if request.method == 'POST':
+        form = resultForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/result')
+    else:
+        form = resultForm()
+    return render(request, 'page/result.html', {
+        'form': form
+    })
+
+#result display  Ends 
