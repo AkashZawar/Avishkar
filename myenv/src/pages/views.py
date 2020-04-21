@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import UploadFileForm,SearchForm,resultForm
+from .models import Search_page_input
 
 
 # Create your views here.
