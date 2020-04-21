@@ -18,6 +18,9 @@ class Code(models.Model):
 
 class Search_page_input(models.Model):
 	searchInput = models.CharField(max_length=120, default='defaultTitle')
+	Title_of_the_Code = models.CharField(max_length=120, default='defaultTitle')
+	value_desc = models.CharField(max_length=120, default='defaultTitle')
+	votes = models.IntegerField(blank=True)
 	
 class resultForm(models.Model):
 	Functionality_Name = models.CharField(max_length=120)
