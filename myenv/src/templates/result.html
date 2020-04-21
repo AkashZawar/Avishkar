@@ -37,7 +37,7 @@
 								<input id="acc_range" type="range" name="accuracy"  min="1" max="100" value="50" step="1" oninput="accu_range_out.value = acc_range.value">
 								<h2><b><output style="font-size: x-large; color:rgb(0, 0, 0);" name="accu_range" id="accu_range_out" >50</output></h2></b>
 								       {% csrf_token %}
-								<!--	{{ form }} -->
+									{{ form }} 
 								<input type="submit" value="Submit">
 							</div>
 						</form>
