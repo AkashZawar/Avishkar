@@ -68,15 +68,12 @@ def model_form_upload(request):
 
 # Below code for result display 
 def display_result(request):
-    if request.method == 'POST':
-        form = resultForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/result')
-    else:
-        form = resultForm()
-    return render(request, 'page/result.html', {
-        'form': form
-    })
+	rows = Search_page_input.objects.raw("select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where id=1")
+
+	# if request.method == 'POST':
+	# search_input_forms = SearchForm()
+	# print(request.GET)
+	# context = {'search_input_forms': form }
+	return render(request, "page/result.html", {'rows': rows})
 
 #result display  Ends 
