@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/html">
 {% load staticfiles %}
 <head>
 	<meta charset="UTF-8" />
@@ -10,6 +10,11 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,400,800' rel='stylesheet' type='text/css'>
 	<meta name="description" content="Examples for creative website header animations using Canvas and JavaScript" />
 	<meta name="keywords" content="header, canvas, animated, creative, inspiration, javascript" />
+<!--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<meta name="author" content="Codrops" />
 
 	<style>
@@ -211,11 +216,20 @@
 			vertical-align: top;
 		}
 
-		table {
+		.table {
+			display:table-header-group
+			border-spacing: 10px;
+			font-family: sans-serif;
+			border: 10px solid black;
 			border-collapse: collapse;
-			border-spacing: 0;
+			border-style: dotted;
+			width:100%;
+			max-width:100%;
+			margin-bottom:20px;
+			text-align:center;
+			border:1px solid #ddd!important;
+}
 		}
-
 
 		@font-face {
 			font-weight: normal;
@@ -345,18 +359,41 @@
 				<h1 class="main-title" style="top:60%">Nights Watch
 					<span class="thin">Automation</span>
 				</h1>
-
 				<div class=" main-title d-flex justify-content-center h-100">
 					<div class="searchbar">
 						<input method='POST' class="search_input" type="text" name="" placeholder="Search...">
-						<a href="/product" class="search_icon glyphicon glyphicon-search">
+						<a href="/upload" class="search_icon glyphicon glyphicon-search">
 							<i class="fas fa-search"></i>
 						</a>
 					</div>
 				</div>
 			</div>
-
 		</div>
+	</div>
+
+    <div>
+	<h1 style="align-content: center;">Below are the most frequently used</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+<!--                    <th style="background: darkgoldenrod;">Ranking</th>-->
+                    <th style="background: darkgoldenrod;">Function Name</th>
+                    <th style="background: darkgoldenrod;">Description</th>
+                    <th style="background: darkgoldenrod;">Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for row in rows %}
+	                    <tr>
+<!--	                 	 <td style="background: black; color: white;"></td>-->
+	                    <td style="background: black; color: white;">{{row.Title_of_the_Code}}</td>
+	                    <td style="background: black; color: white;">{{row.Description_of_the_code}}</td>
+	                    <td style="background: black; color: white;">{{row.vote}}</td>
+	                    </tr>  
+
+				{% endfor %} 
+				</tbody>  
+			</table>
 	</div>
 	<script src="{% static 'js/TweenLite.min.js' %}"></script>
 	<script src="{% static 'js/EasePack.min.js' %}"></script>
