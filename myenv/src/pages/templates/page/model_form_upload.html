@@ -17,15 +17,21 @@
 						  <form method="post" enctype="multipart/form-data">
 						    {% csrf_token %}
 						    {{ form.as_p }}
-						    <button type="submit" class="btn btn-success">Upload</button>
+						    <button type="submit" class="btn btn-success " onclick="fun_popup()">Upload</button>
 						  </form>
 						</div>
 					</div>
 				</div>
 			</div>	
 		</div>
+</div>
 <footer class="container-fluid">
   <p><a href="/search">Return to home</a></p>
 </footer>	
-  
+
+<script>
+	function fun_popup() {
+  alert("Code is Successfully Submited!");
+}
+</script>
 {% endblock %}
