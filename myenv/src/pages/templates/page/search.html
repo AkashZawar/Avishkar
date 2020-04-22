@@ -360,18 +360,26 @@
 					<span class="thin">Automation</span>
 				</h1>
 				<div class=" main-title d-flex justify-content-center h-100">
-					<div class="searchbar">
-						<input method='POST' class="search_input" type="text" name="" placeholder="Search...">
-						<a href="/result/" class="search_icon glyphicon glyphicon-search">
+					<form  method="GET">
+						{% csrf_token %}
+<!--						<div class="searchbar">-->
+<!--&lt;!&ndash;						<label for="searchInput"> Enter the Code u looking for</label><br>&ndash;&gt;-->
+<!--						<input type="text" name="searchInput" id="searchInput"><br>-->
+<!--						<input type="submit">-->
+<!--						</div>-->
+						<div class="searchbar">
+						<input class="search_input" type="text" name="searchInput" placeholder="Search...">
+						<input type="submit" href="/result/" class="search_icon glyphicon glyphicon-search">
 							<i class="fas fa-search"></i>
-						</a>
+						</input>
 					</div>
+					</form>
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-    <div>
 	<h1 style="align-content: center;">Below are the most frequently used</h1>
             <table class="table">
                 <thead>
