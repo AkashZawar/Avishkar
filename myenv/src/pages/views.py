@@ -27,13 +27,14 @@ def about_view(request,*args,**kwargs):
 	return render(request,"about.html",my_context)
 
 def search_view(request, *args, **kwargs):
-	rows = Search_page_input.objects.raw("select id,Title_of_the_Code,Description_of_the_code,vote  from pages_code order by vote DESC LIMIT 3")
-
-	# if request.method == 'POST':
-	# search_input_forms = SearchForm()
-	# print(request.GET)
-	# context = {'search_input_forms': form }
-	return render(request, "page/search.html", {'rows': rows})
+    rows = Search_page_input.objects.raw(
+        "select id,Title_of_the_Code,Description_of_the_code,vote from pages_code order by vote DESC LIMIT 3")
+    if request.method == 'GET':
+        searchInput = request.GET.get('searchInput')
+        print(searchInput)
+        return redirect('/result')
+    else:
+        return render(request, "page/search.html", {'rows': rows})
 
 
 def contact_view(request,*args,**kwargs):
