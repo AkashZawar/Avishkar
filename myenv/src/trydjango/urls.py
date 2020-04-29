@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path
-from pages.views import home_view,about_view,search_view,contact_view,social_view,model_form_upload,display_result
+from pages.views import about_view,search_view,contact_view,social_view,model_form_upload,display_result
 #from product.views import product_detail_view,product_create_view
 
 
