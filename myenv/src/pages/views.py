@@ -40,23 +40,24 @@ def social_view(request,*args,**kwargs):
 
 # Below code for file upload handling 
 def model_form_upload(request):
-	if request.method == 'POST':
-		form = UploadFileForm(request.POST, request.FILES)
-		if form.is_valid():
-			form.save()
-			return redirect('/upload')
-		else:
-			form = UploadFileForm()
-			return render(request, 'page/model_form_upload.html', {
-			'form': form
-			})
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/upload')
+    else:
+        form = UploadFileForm()
+    return render(request, 'page/model_form_upload.html', {
+        'form': form
+    })
+
 
 # file Upload handling Ends 
 
 # Below code for result display 
 def display_result(request):
 	print(request.method)
-	if request.method == 'POST':
+	if request.method == 'GET':
 		searchInput = request.POST.get('searchInput')
 		SQL = "select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where Title_of_the_Code COLLATE UTF8_GENERAL_CI like '%" +searchInput +"%'  LIMIT 1"
 		rows = Code.objects.raw(SQL)
