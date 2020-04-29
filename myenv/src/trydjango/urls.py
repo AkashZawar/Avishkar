@@ -24,19 +24,19 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from pages.views import home_view,about_view,search_view,contact_view,social_view,model_form_upload,display_result
-from product.views import product_detail_view,product_create_view
+#from product.views import product_detail_view,product_create_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', search_view, name='home'),
-    path('home/', home_view, name='home'),
+    # path('home/', home_view, name='home'),
     path('about/', about_view),
     path('search/', search_view),
     path('social/', social_view),
     path('contact/', contact_view),
-    path('product/', product_detail_view),
-    path('create/', product_create_view),
+    # path('product/', product_detail_view),
+    # path('create/', product_create_view),
     path('upload/', model_form_upload),
 	path('result/', display_result)
 ]

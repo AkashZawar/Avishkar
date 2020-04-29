@@ -17,30 +17,25 @@
 			<div class="contact agileits">
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
-						<form action="#" method="post">
-							<div class="">
-								<input type="text" name="fun_name" placeholder="Functionality Name">
-							</div>
-							<div class="">
-								<input class="text" type="text" name="lang" placeholder="Programming Language">
-							</div>
-							<div class="">
-								<input class="email" type="text" name="author" placeholder="Author">
-							</div>
-							<div class="">
-								<textarea placeholder="Code" name="code" rows="20" style="overflow:auto;"></textarea>
-							</div>
-						
-							<mark>Select the accuracy of the code</mark>
-						
-							<div class="accu_range">
-								<input id="acc_range" type="range" name="accuracy"  min="1" max="100" value="50" step="1" oninput="accu_range_out.value = acc_range.value">
-								<h2><b><output style="font-size: x-large; color:rgb(0, 0, 0);" name="accu_range" id="accu_range_out" >50</output></h2></b>
-								       {% csrf_token %}
-									{{ form }} 
-								<input type="submit" value="Submit">
-							</div>
-						</form>
+						 {% for row in rows %}
+				<table border=1 class="table" padding=1>
+				<tbody>
+                    <tr>
+                    <td>Functionality Name</td><td>{{row.Title_of_the_Code}}</td>
+					</tr>
+					<tr>
+					<td>Programming Language</td><td>{{row.language}}</td>
+					<tr>
+					</tr>
+					<td>Author</td><td>{{row.author}}</td>
+					<tr>
+					</tr>
+					<td>Code</td><td>{{row.Code}}</td>
+					<tr>
+					</tr>
+				</tbody>  
+				</table>
+			{% endfor %} 
 					</div>
 				</div>
 			</div>

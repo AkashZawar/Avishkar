@@ -1,80 +1,66 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .forms import UploadFileForm,SearchForm,resultForm
-from .models import Search_page_input
+from .forms import UploadFileForm,SearchForm
+# from .models import Search_page_input,resultForm
+from .models import Search_page_input,Code
 
-
-# Create your views here.
-def home_view(request,*args,**kwargs):
-	print(request)
-	print(args,kwargs)
-	print(request.user)
-	#return HttpResponse(request,"<h1>Hellow world</h1>")
-	my_context = {
-			"pagetitle" : "NightWatch Automation : Home"
-			}
-	return render(request, "page/index.html", {})
 
 def about_view(request,*args,**kwargs):
 	my_context = {
-			"pagetitle" : "NightWatch Automation : About",
-			"key1" : "value1",
-			"key2" : "value2",
-			"key3" : "value3",
+	"pagetitle" : "NightWatch Automation : About",
+	"key1" : "value1",
+	"key2" : "value2",
+	"key3" : "value3",
 	}
 	#return HttpResponse("<h1>About world</h1>")
 	return render(request,"about.html",my_context)
 
+
 def search_view(request, *args, **kwargs):
-    rows = Search_page_input.objects.raw(
-        "select id,Title_of_the_Code,Description_of_the_code,vote from pages_code order by vote DESC LIMIT 3")
-    if request.method == 'GET':
-        searchInput = request.GET.get('searchInput')
-        print(searchInput)
-        return redirect('/result')
-    else:
-        return render(request, "page/search.html", {'rows': rows})
+	rows = Search_page_input.objects.raw("select id,Title_of_the_Code,Description_of_the_code,vote from pages_code order by vote DESC LIMIT 3")
+	return render(request, "page/search.html",{'rows': rows})
 
 
 def contact_view(request,*args,**kwargs):
 	my_context = {
-			"pagetitle" : "NightWatch Automation : Contact"
-			}
+	"pagetitle" : "NightWatch Automation : Contact"
+	}
 	#return HttpResponse("<h1>Contact world</h1>")
 	return render(request,"contact.html",{})
 
+
 def social_view(request,*args,**kwargs):
 	my_context = {
-			"pagetitle" : "NightWatch Automation : Contact"
-			}
+	"pagetitle" : "NightWatch Automation : Contact"
+	}
 	#return HttpResponse("<h1>Contact world</h1>")
 	return render(request,"social.html",{})
 
 
 # Below code for file upload handling 
 def model_form_upload(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/upload')
-    else:
-        form = UploadFileForm()
-    return render(request, 'page/model_form_upload.html', {
-        'form': form
-    })
+	if request.method == 'POST':
+		form = UploadFileForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			return redirect('/upload')
+		else:
+			form = UploadFileForm()
+			return render(request, 'page/model_form_upload.html', {
+			'form': form
+			})
 
 # file Upload handling Ends 
 
 # Below code for result display 
 def display_result(request):
-	rows = Search_page_input.objects.raw("select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where id=1")
+	print(request.method)
+	if request.method == 'POST':
+		searchInput = request.POST.get('searchInput')
+		SQL = "select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where Title_of_the_Code COLLATE UTF8_GENERAL_CI like '%" +searchInput +"%'  LIMIT 1"
+		rows = Code.objects.raw(SQL)
+		return render(request, "result.html",{'rows': rows})
+	else:
+		return render(request, "result.html",{})
 
-	# if request.method == 'POST':
-	# search_input_forms = SearchForm()
-	# print(request.GET)
-	# context = {'search_input_forms': form }
-	return render(request, "page/result.html", {'rows': rows})
-
-#result display  Ends 

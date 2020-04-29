@@ -1,6 +1,7 @@
 from django import forms
 
-from .models import Code,Search_page_input,resultForm
+# from .models import Code,Search_page_input,resultForm
+from .models import Code,Search_page_input
 
 
 class UploadFileForm(forms.ModelForm):
@@ -27,12 +28,12 @@ class SearchForm(forms.ModelForm):
 		]
 
 		
-class resultForm(forms.ModelForm):
-	class Meta:
-		model = resultForm
-		fields = [
-			'Functionality_Name',
-			'Programming_Language',
-			'Author',
-			'Code'
-		]
+# class resultForm(forms.ModelForm):
+	# class Meta:
+		# model = resultForm
+		# fields = [
+			# 'Functionality_Name',
+			# 'Programming_Language',
+			# 'Author',
+			# 'Code'
+		# ]

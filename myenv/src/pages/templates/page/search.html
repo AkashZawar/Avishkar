@@ -360,8 +360,8 @@
 					<span class="thin">Automation</span>
 				</h1>
 				<div class=" main-title d-flex justify-content-center h-100">
-					<form  method="GET">
-						{% csrf_token %}
+					<form action="/result/" method="POST" >
+						{% csrf_token %} 
 <!--						<div class="searchbar">-->
 <!--&lt;!&ndash;						<label for="searchInput"> Enter the Code u looking for</label><br>&ndash;&gt;-->
 <!--						<input type="text" name="searchInput" id="searchInput"><br>-->
@@ -369,7 +369,7 @@
 <!--						</div>-->
 						<div class="searchbar">
 						<input class="search_input" type="text" name="searchInput" placeholder="Search...">
-						<input type="submit" href="/result/" class="search_icon glyphicon glyphicon-search">
+						<input type="submit" class="search_icon glyphicon glyphicon-search">
 							<i class="fas fa-search"></i>
 						</input>
 					</div>
