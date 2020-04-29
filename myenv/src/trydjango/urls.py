@@ -23,8 +23,9 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path
-from pages.views import about_view,search_view,contact_view,social_view,model_form_upload,display_result
-#from product.views import product_detail_view,product_create_view
+from pages.views import about_view, search_view, contact_view, social_view, model_form_upload, display_result
+
+# from product.views import product_detail_view,product_create_view
 
 
 urlpatterns = [
@@ -37,10 +38,9 @@ urlpatterns = [
     path('contact/', contact_view),
     # path('product/', product_detail_view),
     # path('create/', product_create_view),
-    path('upload/', model_form_upload),
-	path('result/', display_result)
+    path('upload/', model_form_upload, name='upload'),
+    path('result/', display_result)
 ]
-
 
 # Uploaded file storege handeler
 if settings.DEBUG:
