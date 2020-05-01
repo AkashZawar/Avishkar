@@ -2,9 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import UploadFileForm,SearchForm
-# from .models import Search_page_input,resultForm
 from .models import Search_page_input,Code
-
 
 def about_view(request,*args,**kwargs):
 	my_context = {
@@ -40,22 +38,21 @@ def social_view(request,*args,**kwargs):
 
 # Below code for file upload handling 
 def model_form_upload(request):
-	if request.method == 'POST':
-		form = UploadFileForm(request.POST, request.FILES)
-		if form.is_valid():
-			form.save()
-			return redirect('/upload')
-		else:
-			form = UploadFileForm()
-			return render(request, 'page/model_form_upload.html', {
-			'form': form
-			})
+	form = UploadFileForm(request.POST, request.FILES)
+	if form.is_valid():
+		form.save()
+		return redirect('/upload/')
+	else:
+		form = UploadFileForm()
+		return render(request, 'page/model_form_upload.html', {
+		'form': form
+		})
 
+	return render(request,"page/model_form_upload.html",my_context)
 # file Upload handling Ends 
 
 # Below code for result display 
 def display_result(request):
-	print(request.method)
 	if request.method == 'POST':
 		searchInput = request.POST.get('searchInput')
 		SQL = "select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where Title_of_the_Code COLLATE UTF8_GENERAL_CI like '%" +searchInput +"%'  LIMIT 1"
