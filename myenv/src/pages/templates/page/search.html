@@ -219,7 +219,7 @@
 		}
 
 		.table {
-			display:table-header-group
+			display:table-header-group;
 			border-spacing: 10px;
 			font-family: sans-serif;
 			border: 10px solid black;
@@ -230,8 +230,8 @@
 			margin-bottom:20px;
 			text-align:center;
 			border:1px solid #ddd!important;
-}
 		}
+		
 
 		@font-face {
 			font-weight: normal;
@@ -366,35 +366,27 @@
 	<div class="container demo-1">
 		<div class="content">
 			<div id="large-header" class="large-header">
-				<canvas id="demo-canvas" style="background-image: url('{% static '/img/demo-1-bg.jpg' %}');"></canvas>
+				<canvas id="demo-canvas" style="background-image: url('{% static '/img/demo-1-bg.jpg' %}')"></canvas>
 				<h1 class="main-title" style="top:60%">Nights Watch
 					<span class="thin">Automation</span>
 				</h1>
 				<div class=" main-title d-flex justify-content-center h-100">
-					<form action="/result/" method="POST" >
+					<form action="/result/" method="POST" name="searchForm" onsubmit="return validateForm()">
 						{% csrf_token %} 
-<!--						<div class="searchbar">-->
-<!--&lt;!&ndash;						<label for="searchInput"> Enter the Code u looking for</label><br>&ndash;&gt;-->
-<!--						<input type="text" name="searchInput" id="searchInput"><br>-->
-<!--						<input type="submit">-->
-<!--						</div>-->
 						<div class="searchbar">
-						<input class="search_input" type="text" name="searchInput" placeholder="Search...">
-						<button type="submit" class="search_icon">
-							<i class="fas fa-search"></i>
-							<!-- <i class="fas fa-glasses"></i> -->
+							<input class="search_input" type="text" name="searchInput" placeholder="Search...">
+							<button type="submit" class="search_icon">
+								<i class="fas fa-search"></i>
 							</button>
-							
-					</div>
+						</div>
 					</form>
-
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<h1 style="align-content: center;">Below are the most frequently used</h1>
-            <table class="table">
+	<h2 style="align-content: center;">Below are the most frequently used</h2>
+            <table class="table" style="vertical-align: middle;font-size: large;padding: 10;max-width: 100%;"  >
                 <thead>
                     <tr>
 <!--                    <th style="background: darkgoldenrod;">Ranking</th>-->
@@ -609,8 +601,16 @@
 			}
 
 		})();
+
+		function validateForm() {
+			var x = document.forms["searchForm"]["searchInput"].value;
+			if (x == "") {
+				alert("Search value cannot be blank!");
+				return false;
+				}
+			}
 	</script>
-	<script type='text/javascript' data-cfasync='false'>
+	<!-- <script type='text/javascript' data-cfasync='false'>
 		window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '39c6c28a-a12c-4962-b24f-57f440ef8701', f: true }); done = true; } }; })();
-	</script>
+	</script> -->
 </html>
