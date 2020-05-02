@@ -5,7 +5,6 @@
 
 		<link href="{%  static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 
-
 		<div class="container">
 			<br/><br/>
 			<h3 class="tittle-w3l">Result:
@@ -18,29 +17,51 @@
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
 						 {% for row in rows %}
-				<table border=1 class="table" padding=1>
+				<table border=1 style="vertical-align: middle;font-size: medium;font-size: large;" class="table" padding=1>
 				<tbody>
                     <tr>
-                    <td>Functionality Name</td><td>{{row.Title_of_the_Code}}</td>
+                    <th>Functionality Name</th><td>{{row.Title_of_the_Code}}</td>
 					</tr>
 					<tr>
-					<td>Programming Language</td><td>{{row.language}}</td>
-					<tr>
+					<th>Programming Language</th><td>{{row.language}}</td>
 					</tr>
-					<td>Author</td><td>{{row.author}}</td>
 					<tr>
+					<th>Author</th><td>{{row.author}}</td>
 					</tr>
-					<td>Code</td><td>{{row.Code}}</td>
 					<tr>
+					<th>Code</th><td>{{row.Code}}</td>
 					</tr>
+					<tr>
+					<form action="/resultSave/" method="post">
+						{% csrf_token %} 
+						<th style="text-align:center;font-size: larger;" colspan="2"><mark>Select the accuracy of the code</mark></th>
+					</tr>
+					<div class="accu_range">
+						<tr>
+							<td><input id="acc_range" type="range" name="accuracy"  min="1" max="100" value="50" step="1" oninput="accu_range_out.value = acc_range.value"></td>
+						<th style="text-align:center;font-size: larger;"><h2><b><output style="font-size: x-large; color:rgb(0, 0, 0);" name="accu_range" id="accu_range_out" >50</output></h2></b></th>
+						</tr>
+						<tr></tr>
+						<tr style="border-style: hidden;">
+							<td style="text-align:center;font-size: larger;" colspan="2"><input type="submit" value="Submit" onclick="fun_popup()"></td>
+						</tr>
+						<tr style="border-style: hidden;">
+							<td colspan="2"><h3 class="tittle-w3l"><span class="heading-style"> <i></i>	<i></i>	<i></i> </span> </h3></td>
+						</tr>
+					</div>
 				</tbody>  
 				</table>
-			{% endfor %} 
+			{% endfor %}
 					</div>
 				</div>
 			</div>
 		</div>
 		<br/><br/>
 
+		<script>
+			function fun_popup() {
+		  alert("Thank you for your feedback!");
+		}
+		</script>
 <!-- {% endblock %} -->
 	

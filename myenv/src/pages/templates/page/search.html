@@ -16,7 +16,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<meta name="author" content="Codrops" />
-
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	
 	<style>
 		article,
 		aside,
@@ -312,10 +314,10 @@
 			background-color: #5d5d5d;
 			border-radius: 30px;
 			padding: 10px;
+			border-color:  #5d5d5d;
 		}
 
 		.search_input {
-			color: white;
 			border: 0;
 			outline: 0;
 			background: none;
@@ -323,18 +325,26 @@
 			caret-color: transparent;
 			line-height: 40px;
 			transition: width 0.4s linear;
+			border-color:  #5d5d5d;
+			color: white;
+			background-color: #5d5d5d;
 		}
 
 		.searchbar:hover>.search_input {
 			padding: 0 10px;
 			width: 450px;
-			caret-color: red;
+			caret-color:  #5d5d5d;
 			transition: width 0.4s linear;
+			background-color: #5d5d5d;
+			color: white;
 		}
 
 		.searchbar:hover>.search_icon {
-			background: white;
-			color: #e74c3c;
+			background:  #5d5d5d;
+			color: white;
+			border-color:  #5d5d5d;
+			border-style: none;
+			background-color: #5d5d5d;
 		}
 
 		.search_icon {
@@ -345,8 +355,9 @@
 			justify-content: center;
 			align-items: center;
 			border-radius: 50%;
-			color: white;
-			text-decoration: none;
+			color: white;	
+			border-style: none;	
+			background-color: #5d5d5d;
 		}
 	</style>
 </head>
@@ -369,9 +380,11 @@
 <!--						</div>-->
 						<div class="searchbar">
 						<input class="search_input" type="text" name="searchInput" placeholder="Search...">
-						<input type="submit" class="search_icon glyphicon glyphicon-search">
+						<button type="submit" class="search_icon">
 							<i class="fas fa-search"></i>
-						</input>
+							<!-- <i class="fas fa-glasses"></i> -->
+							</button>
+							
 					</div>
 					</form>
 

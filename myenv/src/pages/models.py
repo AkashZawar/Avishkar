@@ -22,8 +22,6 @@ class Search_page_input(models.Model):
 	value_desc = models.CharField(max_length=120, default='defaultTitle')
 	votes = models.IntegerField(default=0,blank=True)
 	
-# class resultForm(models.Model):
-	# Functionality_Name = models.CharField(max_length=120)
-	# Programming_Language = models.CharField(max_length=120)
-	# Author = models.CharField(max_length=120)
-	# Code = models.TextField(blank=True, null=True)
+class resultForm(models.Model):
+	Functionality_Name = models.CharField(max_length=120)
+	Accuracy = models.IntegerField(default=1)

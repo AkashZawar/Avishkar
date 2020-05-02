@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path
-from pages.views import about_view,search_view,contact_view,social_view,model_form_upload,display_result
+from pages.views import about_view,search_view,contact_view,social_view,model_form_upload,display_result,result_form_submit
 
 
 urlpatterns = [
@@ -34,7 +34,8 @@ urlpatterns = [
     path('social/', social_view),
     path('contact/', contact_view),
 	path('upload/', model_form_upload),
-	path('result/', display_result)
+	path('result/', display_result),
+    path('resultSave/',result_form_submit)
 ]
 
 # Uploaded file storage handler
