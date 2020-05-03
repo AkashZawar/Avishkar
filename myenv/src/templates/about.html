@@ -1,21 +1,74 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-<!-- <title>{{pagetitle}}</title> -->
-	<h1>this is about page</h1>
-	<p>About page templete</p>
-<p>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button" onclick="top.location.href='https://www.revolvermaps.com/livestats/5hv2455mtrf/';">{{key1}}</button>
-    <button class="dropdown-item" type="button">{{key2}}</button>
-    <button class="dropdown-item" type="button">{{key3}}</button>
-  </div>
-</div>
-</p>
+<style>
+table {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+counter-reset: row;
+}
 
+td, th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+
+tr:nth-child(even) {
+background-color: #dddddd;
+counter-increment: row;
+}
+
+<!--#myTable td:first-child::before {-->
+<!--content: counter(row);-->
+<!--}-->
+
+</style>
+
+<div class="container-fluid">
+    <div class="row content">
+    	<div class="col-sm-3 sidenav">
+    	</div>
+    </div>
+    <div class="col-sm-9">
+    	  <div class="page-wrapper bg-dark p-t-20 p-b-50">
+		        <div class="wrapper wrapper--w900">
+		            <div class="card card-6">
+		                <div class="card-heading">
+                            <h2 class="title">Upload your .xlsx File to Generate Code </h2>
+						  <form method="post" enctype="multipart/form-data">
+						    {% csrf_token %}
+						    {{ form.as_p }}
+						    <button type="submit" class="btn btn-success " onclick="fun_popup()">Upload</button>
+						  </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<br>
+<h4>Example format Below....</h4>
+<table id="myTable">
+  <tr>
+    <th>Test Action</th>
+    <th>Test Locator</th>
+    <th>Input Value(If Any)</th>
+  </tr>
+    <tr>
+            <td>Input Text</td>
+            <td>First Name</td>
+            <td>Value of the name</td>
+    </tr>
+<tr>
+<footer class="container-fluid">
+  <p><a href="/search">Return to home</a></p>
+</footer>
+
+<script>
+	function fun_popup() {
+  alert("Xls is Successfully Submitted...!!!");
+}
+</script>
 {% endblock %}
