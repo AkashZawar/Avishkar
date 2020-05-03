@@ -55,16 +55,18 @@ def model_form_upload(request):
 def display_result(request):
 	if request.method == 'POST':
 		searchInput = request.POST.get('searchInput')
-		SQL = "select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where Title_of_the_Code COLLATE UTF8_GENERAL_CI like '%" +searchInput +"%' limit 10"
+		SQL = "select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where Title_of_the_Code COLLATE UTF8_GENERAL_CI like '%" +searchInput +"%' limit 3"
 		rows = Code.objects.raw(SQL)
 		return render(request, "result.html",{'rows': rows})
 	else:
 		return render(request, "result.html",{})
 
 def result_form_submit(request):
-	form = UploadFileForm(request.POST)
+	rows="resultSave"
+	print(rows)
+	form = UploadFileForm(request.GET)
 	if form.is_valid():
 		form.save()
-		return redirect('/resultSave/')
+		return render(request, "/resultSave/",{'rows': rows})
 	else:
-		return render(request, "result.html",{})
+		return render(request, "result.html",{'rows': rows})

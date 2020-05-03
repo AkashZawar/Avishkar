@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en" class="no-js" xmlns="http://www.w3.org/1999/html">
-{% load staticfiles %}
+		{% load static %}
+		{% load staticfiles %}
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -359,19 +359,29 @@
 			border-style: none;	
 			background-color: #5d5d5d;
 		}
+
+		.leftTable{
+			display: none;
+		}
+		.searchForm:hover>.leftTable {
+			display: block;
+		}
+
+
 	</style>
 </head>
 
-<body >
-	<div class="container demo-1">
+<body style="background-color: black;">
+	<div style="float: inline-start" class="container demo-1">
 		<div class="content">
 			<div id="large-header" class="large-header">
 				<canvas id="demo-canvas" style="background-image: url('{% static '/img/demo-1-bg.jpg' %}')"></canvas>
-				<h1 class="main-title" style="top:60%">Nights Watch
+				<h1 class="main-title" style="top:60%" >Nights Watch
 					<span class="thin">Automation</span>
 				</h1>
+				
 				<div class=" main-title d-flex justify-content-center h-100">
-					<form action="/result/" method="POST" name="searchForm" onsubmit="return validateForm()">
+					<form action="/result/" method="POST" name="searchForm" onsubmit="return validateForm()" style="float: right;">
 						{% csrf_token %} 
 						<div class="searchbar">
 							<input class="search_input" type="text" name="searchInput" placeholder="Search...">
@@ -380,13 +390,55 @@
 							</button>
 						</div>
 					</form>
+					<div class='leftTable' style="float: left;color:white;width: fit-content;padding-left: 3%;font-size: large;" >
+						<br/><br/>
+						<h3>Filters:</h3>
+						<br/>
+						<h5><p>Programming Language</p></h5>
+						<label>
+						<input type="checkbox" rel="arts" onclick="filterSelection('Python')" name="Progcategory"/>
+						Python
+						</label><br>
+						<label>
+						<input type="checkbox" onclick="filterSelection('Java')" name="Progcategory"/>
+						Java
+						</label><br>
+						<label>
+						<input type="checkbox" onclick="filterSelection('C++')" name="Progcategory"/>
+						C++
+						</label> <br>
+						<label>
+						<input type="checkbox" onclick="filterSelection('Ruby')" name="Progcategory"/>
+						Ruby
+						</label><br>
+						<label>
+						<input type="checkbox" onclick="filterSelection('C#')" name="Progcategory"/>
+						C#
+						</label><br>
+						<br/>
+						<h5>Platforms</h5>
+					   
+						<label>
+						<input type="checkbox" onclick="filterSelection('Web')" name="Platcategory"/>
+						Web
+						</label><br>
+						<label>
+						<input type="checkbox" onclick="filterSelection('MObile')" name="Platcategory"/>
+						Mobile
+						</label><br>
+						<label>
+						<input type="checkbox" onclick="filterSelection('C++')" name="Platcategory"/>
+						API
+						</label><br>
+					 </div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<h2 style="align-content: center;">Below are the most frequently used functionalities:</h2>
+	<!-- <h2 style="align-content: center;color:white;">Below are the most frequently used functionalities:</h2> -->
             <table class="table" style="vertical-align: middle;font-size: large;padding: 10;width: 100%;"  >
+	<caption style="font-size:xx-large;font-weight: bold;text-align: justify;width:max-content">Below are the most frequently used functionalities:</caption>
                 <thead>
                     <tr>
 <!--                    <th style="background: darkgoldenrod;">Ranking</th>-->
@@ -407,11 +459,11 @@
 				{% endfor %} 
 				</tbody>  
 			</table>
-	</div>
 	<script src="{% static 'js/TweenLite.min.js' %}"></script>
 	<script src="{% static 'js/EasePack.min.js' %}"></script>
 	<script src="{% static 'js/rAF.js' %}"></script>
 	<script src="{% static 'js/demo-1.js' %}"></script>
+	<br/><br/>
 </body>
 <script>
 		(function () {
