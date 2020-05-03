@@ -1,10 +1,65 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% block content %}
+
 
 		{% load static %}
 
 		<link href="{%  static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 
+		
+		{% if rows == "resultSave" %}
+		<br/><br/>
+			<h3 class="tittle-w3l">Thank you for your feedback!
+				<span class="heading-style">
+					<i></i>	<i></i>	<i></i>
+				</span>
+			</h3>
+			<h3><span style="margin-left: 40%;"><i>Click here to go back to <a href="/search">search</a> page..</i></span></h3>
+
+		{% elif rows %}
+		<div style="float: left;width: fit-content;padding-left: 3%;font-size: large; color: black;" id='leftTable'>
+			<br/><br/>
+			<br/><br/>
+			<h3>Filters:</h3>
+			<br/>
+			<h5><p>Programming Language</p></h5>
+			<label>
+			<input type="checkbox" rel="arts" onclick="filterSelection('Python')" name="Progcategory"/>
+			Python
+			</label><br>
+			<label>
+			<input type="checkbox" onclick="filterSelection('Java')" name="Progcategory"/>
+			Java
+			</label><br>
+			<label>
+			<input type="checkbox" onclick="filterSelection('C++')" name="Progcategory"/>
+			C++
+			</label> <br>
+			<label>
+			<input type="checkbox" onclick="filterSelection('Ruby')" name="Progcategory"/>
+			Ruby
+			</label><br>
+			<label>
+			<input type="checkbox" onclick="filterSelection('C#')" name="Progcategory"/>
+			C#
+			</label><br>
+			<br/>
+			<br/>
+			<h5<p>Platforms<p></h5>
+			<label>
+			<input type="checkbox" onclick="filterSelection('Web')" name="Platcategory"/>
+			Web
+			</label><br>
+			<label>
+			<input type="checkbox" onclick="filterSelection('MObile')" name="Platcategory"/>
+			Mobile
+			</label><br>
+			<label>
+			<input type="checkbox" onclick="filterSelection('C++')" name="Platcategory"/>
+			API
+			</label><br>
+		 </div>
+		 
 		<div class="container">
 			<br/><br/>
 			<h3 class="tittle-w3l">Result:
@@ -16,6 +71,7 @@
 			<div class="contact agileits">
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
+							
 						 {% for row in rows %}
 				<table border=1 style="vertical-align: middle;font-size: medium;font-size: large;" class="table" padding=1>
 				<tbody>
@@ -32,7 +88,7 @@
 					<th>Code</th><td>{{row.Code}}</td>
 					</tr>
 					<tr>
-					<form action="/resultSave/" method="post">
+					<form action="/resultSave/" method="GET">
 						{% csrf_token %} 
 						<th style="text-align:center;font-size: larger;" colspan="2"><mark>Select the accuracy of the code</mark></th>
 					</tr>
@@ -43,7 +99,8 @@
 						</tr>
 						<tr></tr>
 						<tr style="border-style: hidden;">
-							<td style="text-align:center;font-size: larger;" colspan="2"><input type="submit" value="Submit" onclick="fun_popup()"></td>
+							<!-- <td style="text-align:center;font-size: larger;" colspan="2"><input type="submit" value="Submit" onclick="fun_popup()"></td> -->
+							<td style="text-align:center;font-size: larger;" colspan="2"><input type="submit" value="Submit"></td>
 						</tr>
 						<tr style="border-style: hidden;">
 							<td colspan="2"><h3 class="tittle-w3l"><span class="heading-style"> <i></i>	<i></i>	<i></i> </span> </h3></td>
@@ -52,16 +109,21 @@
 				</tbody>  
 				</table>
 			{% endfor %}
+			{% else %}
+			<br/><br/>
+			<h3 class="tittle-w3l">No Results Found!<span class="heading-style"><i></i>	<i></i>	<i></i>	</span>	</h3>
+			<h3><span style="margin-left: 40%;"><i>Click here to go back to <a href="/search">search</a> page..</i></span></h3>
+			
 					</div>
 				</div>
 			</div>
 		</div>
 		<br/><br/>
-
-		<script>
+		{% endif %}
+		<!-- <script>
 			function fun_popup() {
 		  alert("Thank you for your feedback!");
 		}
-		</script>
+		</script> -->
 <!-- {% endblock %} -->
 	
