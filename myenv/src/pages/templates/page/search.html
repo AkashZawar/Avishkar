@@ -359,15 +359,6 @@
 			border-style: none;	
 			background-color: #5d5d5d;
 		}
-
-		.leftTable{
-			display: none;
-		}
-		.searchForm:hover>.leftTable {
-			display: block;
-		}
-
-
 	</style>
 </head>
 
@@ -390,47 +381,6 @@
 							</button>
 						</div>
 					</form>
-					<div class='leftTable' style="float: left;color:white;width: fit-content;padding-left: 3%;font-size: large;" >
-						<br/><br/>
-						<h3>Filters:</h3>
-						<br/>
-						<h5><p>Programming Language</p></h5>
-						<label>
-						<input type="checkbox" rel="arts" onclick="filterSelection('Python')" name="Progcategory"/>
-						Python
-						</label><br>
-						<label>
-						<input type="checkbox" onclick="filterSelection('Java')" name="Progcategory"/>
-						Java
-						</label><br>
-						<label>
-						<input type="checkbox" onclick="filterSelection('C++')" name="Progcategory"/>
-						C++
-						</label> <br>
-						<label>
-						<input type="checkbox" onclick="filterSelection('Ruby')" name="Progcategory"/>
-						Ruby
-						</label><br>
-						<label>
-						<input type="checkbox" onclick="filterSelection('C#')" name="Progcategory"/>
-						C#
-						</label><br>
-						<br/>
-						<h5>Platforms</h5>
-					   
-						<label>
-						<input type="checkbox" onclick="filterSelection('Web')" name="Platcategory"/>
-						Web
-						</label><br>
-						<label>
-						<input type="checkbox" onclick="filterSelection('MObile')" name="Platcategory"/>
-						Mobile
-						</label><br>
-						<label>
-						<input type="checkbox" onclick="filterSelection('C++')" name="Platcategory"/>
-						API
-						</label><br>
-					 </div>
 				</div>
 			</div>
 		</div>
@@ -445,6 +395,7 @@
                     <th style="background: darkgoldenrod;">Function Name</th>
                     <th style="background: darkgoldenrod;">Description</th>
                     <th style="background: darkgoldenrod;">Votes</th>
+                    <th style="background: darkgoldenrod;">Accuracy</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -454,6 +405,7 @@
 	                    <td style="background: black; color: white;">{{row.Title_of_the_Code}}</td>
 	                    <td style="background: black; color: white;">{{row.Description_of_the_code}}</td>
 	                    <td style="background: black; color: white;">{{row.vote}}</td>
+	                    <td style="background: black; color: white;">{{row.accuracy}} %</td>
 	                    </tr>  
 
 				{% endfor %} 

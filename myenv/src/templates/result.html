@@ -17,7 +17,7 @@
 			<h3><span style="margin-left: 40%;"><i>Click here to go back to <a href="/search">search</a> page..</i></span></h3>
 
 		{% elif rows %}
-		<div style="float: left;width: fit-content;padding-left: 3%;font-size: large; color: black;" id='leftTable'>
+		<div style="float: left;width: fit-content;padding-left: 3%;font-size: medium; color: black;" id='leftTable'>
 			<br/><br/>
 			<br/><br/>
 			<h3>Filters:</h3>
@@ -73,7 +73,7 @@
 					<div class="contact-form wthree">
 							
 						 {% for row in rows %}
-				<table border=1 style="vertical-align: middle;font-size: medium;font-size: large;" class="table" padding=1>
+				<table border=1 style="vertical-align: middle;font-size: medium;font-size: medium;" class="table" padding=1>
 				<tbody>
                     <tr>
                     <th>Functionality Name</th><td>{{row.Title_of_the_Code}}</td>
@@ -88,10 +88,11 @@
 					<th>Code</th><td>{{row.Code}}</td>
 					</tr>
 					<tr>
-					<form action="/resultSave/" method="GET">
+					<form action="/resultSave/" method="POST">
 						{% csrf_token %} 
 						<th style="text-align:center;font-size: larger;" colspan="2"><mark>Select the accuracy of the code</mark></th>
 					</tr>
+								<input type="hidden" name="Title_of_the_Code" value={{row.Title_of_the_Code}} />
 					<div class="accu_range">
 						<tr>
 							<td><input id="acc_range" type="range" name="accuracy"  min="1" max="100" value="50" step="1" oninput="accu_range_out.value = acc_range.value"></td>

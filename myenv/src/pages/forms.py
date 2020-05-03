@@ -1,5 +1,5 @@
 from django import forms
-from .models import Code, Search_page_input, CodeInput, XLUploadModel #resultForm,
+from .models import Code, Search_page_input, CodeInput, XLUploadModel
 
 
 class UploadFileForm(forms.ModelForm):
@@ -12,9 +12,6 @@ class UploadFileForm(forms.ModelForm):
             'Upload_Code_file',
             'author',
             'language',
-            'vote',
-            'score',
-            'visits',
         ]
 
 
@@ -25,14 +22,14 @@ class SearchForm(forms.ModelForm):
             'searchInput'
         ]
 
-#
-# class resultForm(forms.ModelForm):
-#     class Meta:
-#         model = resultForm
-#         fields = [
-#             'Functionality_Name',
-#             'Accuracy'
-#         ]
+
+class resultForm(forms.ModelForm):
+    class Meta:
+        model = Code
+        fields = [
+            'Title_of_the_Code',
+            'accuracy',
+        ]
 
 
 class StepInput(forms.ModelForm):

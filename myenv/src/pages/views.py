@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .forms import UploadFileForm, SearchForm, StepInput,XLUpload #resultForm,
-from .models import Search_page_input, Code
+from .forms import UploadFileForm, SearchForm, StepInput,XLUpload, resultForm
+from .models import Search_page_input, Code #, resultFormModel
 
 
 def about_view(request, *args, **kwargs):
@@ -11,6 +11,7 @@ def about_view(request, *args, **kwargs):
         if form.is_valid():
             form.save()
             # return redirect('about.html')
+            # driver()
             return render(request, 'about.html', {
                 'form': form
             })
@@ -18,15 +19,14 @@ def about_view(request, *args, **kwargs):
         form = XLUpload()
     return render(request, 'about.html', {
         'form': form
-    })
-
+    }) 
 
 # return render(request, "about.html", my_context)
 
 
 def search_view(request, *args, **kwargs):
     rows = Search_page_input.objects.raw(
-        "select id,Title_of_the_Code,Description_of_the_code,vote from pages_code order by vote DESC LIMIT 3")
+        "select id,Title_of_the_Code,Description_of_the_code,vote,accuracy from pages_code order by vote DESC LIMIT 3")
     return render(request, "page/search.html", {'rows': rows})
 
 
@@ -62,20 +62,31 @@ def model_form_upload(request):
 
 # Below code for result display 
 def display_result(request):
-	if request.method == 'POST':
-		searchInput = request.POST.get('searchInput')
-		SQL = "select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where Title_of_the_Code COLLATE UTF8_GENERAL_CI like '%" +searchInput +"%' limit 3"
-		rows = Code.objects.raw(SQL)
-		return render(request, "result.html",{'rows': rows})
-	else:
-		return render(request, "result.html",{})
+    if request.method == 'POST':
+        searchInput = request.POST.get('searchInput')
+        SQL = "select id,Title_of_the_Code,author,language,Code,Upload_Code_file from pages_code where Title_of_the_Code COLLATE UTF8_GENERAL_CI like '%" +searchInput +"%' limit 1"
+        rows = Code.objects.raw(SQL)
+        # print(rows.Title_of_the_Code)
+        # e = Code.objects.get(Title_of_the_Code=searchInput)
+        # e.visits += 1
+        # e.save()
+        return render(request, "result.html",{'rows': rows})
+    else:
+        return render(request, "result.html",{})
 
 def result_form_submit(request):
 	rows="resultSave"
-	print(rows)
-	form = UploadFileForm(request.GET)
+	form = resultForm(request.POST)
 	if form.is_valid():
-		form.save()
-		return render(request, "/resultSave/",{'rows': rows})
+		acr = form.cleaned_data['accuracy']
+		title = form.cleaned_data['Title_of_the_Code']
+		f = Code.objects.get(Title_of_the_Code=title)
+		f.vote += 1
+		f.score += acr
+		f.accuracy = f.score / f.vote
+        # f.visits += 1
+		f.save()
+		return render(request, "result.html",{'rows': rows})
 	else:
+		print("Errors:", form.errors)
 		return render(request, "result.html",{'rows': rows})
